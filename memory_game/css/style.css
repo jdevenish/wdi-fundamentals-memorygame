@@ -45,8 +45,45 @@ a {
 	color: #FFFFFF;
 	font-size: 18px;
 	margin: 0 20px;
+	border-bottom: 2px solid transparent;
+}
+
+a:hover{
+	border-bottom: 2px solid white;
 }
 
 img {
 	margin: 40px 8px;
+}
+
+footer {
+	padding: 0 20px;
+	background-color: #0d2c40;
+	color: white;
+	font-size: 14px;
+	letter-spacing: .08em;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+.name {
+	color: #f15b31;
+	font-weight: 700;
+}
+
+.copyright {
+	float: left;
+}
+
+.message {
+	float: right;
+}
+
+.clearfix:after {
+visibility: hidden;
+display: block;
+content: " ";
+clear: both;
+height: 0;
+font-size: 0;
 }
