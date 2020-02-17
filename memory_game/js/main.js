@@ -1,4 +1,7 @@
 
+/*
+ * Define cards to be played with
+ */
 let cards = [
 	{
 		rank: "queen",
@@ -23,36 +26,76 @@ let cards = [
 ];
 
 cardsInPlay = [];
+score = {
+	player : 0,
+	computer: 0
+}
 
+/*
+ * Helper function that prints card image path and suit
+ */
 function printCardObj(cardObj) {
 	console.log(cardObj.cardImage);
 	console.log(cardObj.suit);
 }
 
+/*
+ * Check for matching cards. 
+ * Alert user with results.
+ * Keep track of scores
+ */
 function checkForMatch(){
-	if (cardsInPlay.length > 1) {
-		if (cardsInPlay[0].rank === cardsInPlay[1].rank) {
-		  console.log("You found a match!");
-		  printCardObj(cardsInPlay[0]);
-		  printCardObj(cardsInPlay[1])
-		} else {
-		  console.log("Sorry, try again.");
-		}
+	if (cardsInPlay[0].rank === cardsInPlay[1].rank) {
+		score.player += 1;
+	  	alert("You found a match! \n "+
+	  		"Player: " + score.player + "\n" +
+	  		"Computer: " + score.computer);
+	} else {
+		score.computer += 1;
+	  	alert("Sorry, try again! \n "+
+	  		"Player: " + score.player + "\n" +
+	  		"Computer: " + score.computer);
+	}
+	resetBoard();
+	cardsInPlay = [];
+}
+
+/*
+ * Flip card to selected state
+ */
+function flipCard() {
+	let cardId = this.getAttribute("data-id");
+	this.setAttribute("src", cards[cardId].cardImage);
+	cardsInPlay.push(cards[cardId]);
+	if (cardsInPlay.length > 1){
+		checkForMatch();
 	}
 }
 
-function flipCard(cardId) {
-	let flippedCard = cards[cardId].rank;
-	console.log("User flipped " + flippedCard);
-	cardsInPlay.push(cards[cardId]);
-	checkForMatch();
-	//return flippedCard;
+/*
+ * Create a new board
+ */
+function createBoard() {
+	for(let i=0; i<cards.length; i++){
+		const board = document.getElementById("game-board");
+		let tempCard = document.createElement('img');
+		tempCard.setAttribute("src","images/back.png");
+		tempCard.setAttribute("data-id", i);
+		tempCard.addEventListener("click", flipCard);
+		board.appendChild(tempCard);
+	}
 }
 
-flipCard(0)
-flipCard(1)
+/*
+ * Remove and rebuild the board
+ */
+function resetBoard() {
+	for(let i=0; i<cards.length; i++){
+		const board = document.getElementById("game-board");
+		board.removeChild(board.childNodes[0]);
+	}
+	createBoard();
+}
 
 
-
-
-//alert();
+createBoard();
