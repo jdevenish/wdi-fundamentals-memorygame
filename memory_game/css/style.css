@@ -56,6 +56,12 @@ img {
 	margin: 40px 8px;
 }
 
+img:hover{
+	box-shadow: 5px 5px 5px #d5d5d5;
+	z-index: -1;
+	border-radius: 0px 0px 5px 0px;
+}
+
 footer {
 	padding: 0 20px;
 	background-color: #0d2c40;
@@ -65,6 +71,27 @@ footer {
 	font-weight: 500;
 	text-transform: uppercase;
 	bottom: 0;
+}
+
+button {
+	color: #FFFFFF;
+	background-color: #F15B31;
+	height: 40px;
+	width: 100px;
+	font-size: 18px;
+	font-weight: 700;
+	border-radius: 20px;
+	margin: 30px auto;
+}
+
+table {
+	margin: 25px auto;
+}
+
+th {
+	padding: 5px;
+	text-align: right;
+
 }
 
 .name {
@@ -81,10 +108,35 @@ footer {
 }
 
 .clearfix:after {
-visibility: hidden;
-display: block;
-content: " ";
-clear: both;
-height: 0;
-font-size: 0;
+	visibility: hidden;
+	display: block;
+	content: " ";
+	clear: both;
+	height: 0;
+	font-size: 0;
 }
+
+.clear-results {
+	padding: 5px 0 0 0;
+	height: 190px;
+  	width: 380px;
+  	background-color: #FFFFFF;
+}
+.results {
+  	background-color: #00A6B3;
+  	margin: 0 auto;
+  	border-radius: 20px;
+  	font-family: "Raleway", sans-serif;
+  	color: #FFFFFF;
+  	font-weight: 700;
+}
+
+.bannerHeading {
+	font-family: "Raleway", sans-serif;
+  	color: #FFFFFF;
+  	font-size: 24px;
+  	margin: 12px auto;
+}
+
+
+
